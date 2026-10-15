@@ -9,6 +9,7 @@ window.JLDEX_PORTRAITS = {
   "green-arrow": 1,
   "green-lantern-hal": 1,
   "martian-manhunter": 1,
+  "metamorpho": 1,
   "superman": 1,
   "wonder-woman": 1,
 };

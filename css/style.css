@@ -125,6 +125,9 @@ main{padding:24px;max-width:1400px;margin:0 auto}
 .types{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
 .meta{display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;font-size:13px;color:var(--muted);margin-bottom:18px}
 .meta b{color:#cdd8f5}
+.ref{margin:0 0 16px;font-size:12px;color:var(--muted)}
+.ref a{color:#8fb4ff;text-decoration:none;border-bottom:1px dotted rgba(143,180,255,.5)}
+.ref a:hover{color:#fff}
 .stats{display:grid;gap:7px;margin-bottom:20px}
 .stat{display:grid;grid-template-columns:52px 1fr 34px;align-items:center;gap:10px;font-size:12px}
 .stat .lbl{color:var(--muted);font-weight:700;letter-spacing:.5px}

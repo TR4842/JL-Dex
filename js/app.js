@@ -119,6 +119,16 @@
     document.getElementById('mHeight').textContent = m.height;
     document.getElementById('mWeight').textContent = m.weight;
     document.getElementById('mFirst').textContent = m.first;
+    var jr = document.getElementById('mJoinedRow');
+    if (m.joined) { document.getElementById('mJoined').textContent = m.joined; jr.classList.remove('hidden'); }
+    else { jr.classList.add('hidden'); }
+    var rr = document.getElementById('mRefRow');
+    if (m.src) {
+      var link = document.getElementById('mRef');
+      link.href = m.src;
+      link.textContent = 'Wikipedia - ' + decodeURIComponent(m.src.split('/wiki/')[1] || '').replace(/_/g, ' ');
+      rr.classList.remove('hidden');
+    } else { rr.classList.add('hidden'); }
     var s = m.stats || {};
     var labels = { hp: 'HP', atk: 'ATK', def: 'DEF', spd: 'SPD', int: 'INT', wil: 'WIL' };
     document.getElementById('mStats').innerHTML = Object.keys(labels).map(function (k) {

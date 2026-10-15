@@ -288,7 +288,10 @@
         '<div><dt>Origin</dt><dd>' + m.origin + '</dd></div>' +
         '<div><dt>Classification</dt><dd>' + (m.types || []).join(', ') + '</dd></div>' +
         '<div><dt>Height</dt><dd>' + m.height + '</dd></div>' +
-        '<div><dt>Weight</dt><dd>' + m.weight + '</dd></div>';
+        '<div><dt>Weight</dt><dd>' + m.weight + '</dd></div>' +
+        (m.joined ? '<div><dt>Joined the League</dt><dd>' + m.joined + '</dd></div>' : '') +
+        (m.src ? '<div><dt>Reference</dt><dd><a class="ref" href="' + m.src +
+          '" target="_blank" rel="noopener noreferrer">Wikipedia &#8599;</a></dd></div>' : '');
       statRows(m, stats);
       abils.innerHTML = abilHTML(m.abilities);
       bio.textContent = m.bio;
