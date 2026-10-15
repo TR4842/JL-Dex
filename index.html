@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JL-Dex — Justice League Pokedex</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">JL-DEX</div>
+    <div class="subtitle">Justice League Member Database</div>
+    <div class="search-wrap">
+      <input id="search" type="text" placeholder="Search members, powers, aliases..." />
+    </div>
+  </header>
+  <nav class="filters" id="filters" aria-label="Filter by type"></nav>
+
+  <main>
+    <p class="count" id="count"></p>
+    <section id="grid" class="grid"></section>
+  </main>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <button id="closeModal" class="close">&times;</button>
+      <div class="modal-body">
+        <div class="modal-img-wrap">
+          <img id="mImg" alt="" />
+          <div class="modal-id" id="mId"></div>
+        </div>
+        <div class="modal-info">
+          <h2 id="mName"></h2>
+          <div class="alias" id="mAlias"></div>
+          <div class="types" id="mTypes"></div>
+          <div class="meta">
+            <span><b>Origin:</b> <span id="mOrigin"></span></span>
+            <span><b>Height:</b> <span id="mHeight"></span></span>
+            <span><b>Weight:</b> <span id="mWeight"></span></span>
+            <span><b>First:</b> <span id="mFirst"></span></span>
+          </div>
+          <div class="stats" id="mStats"></div>
+          <div class="abilities">
+            <h3>Abilities</h3>
+            <ul id="mAbilities"></ul>
+          </div>
+          <p class="bio" id="mBio"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
