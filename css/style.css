@@ -34,7 +34,13 @@ body{
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 .subtitle{color:var(--muted);font-size:13px;letter-spacing:1px;text-transform:uppercase}
-.search-wrap{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+.nav-elegant{
+  margin-left:auto;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;
+  color:#e7d3a0;border:1px solid rgba(231,211,160,.28);border-radius:999px;padding:8px 14px;
+  transition:all .25s ease;white-space:nowrap
+}
+.nav-elegant:hover{background:rgba(231,211,160,.10);color:#fff;border-color:rgba(231,211,160,.6)}
+.search-wrap{margin-left:0;display:flex;gap:10px;flex-wrap:wrap}
 input[type=text],select{
   background:#0e1730;border:1px solid var(--line);color:var(--ink);
   padding:10px 12px;border-radius:10px;font-size:14px;outline:none;

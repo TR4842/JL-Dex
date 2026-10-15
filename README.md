@@ -5,6 +5,15 @@ vital stats, abilities and first appearance. Pure HTML/CSS/JS, no build step, no
 
 ![JL-Dex](preview.png)
 
+There are two front ends over the same member data:
+
+| Edition | Page | Look |
+| --- | --- | --- |
+| Classic dex | `index.html` | dark hologram grid — fast scanning, type chips, quick detail card |
+| **Elegant edition** | `elegant.html` | editorial archive — serif typography, gold hairlines, spotlight carousel, era filters |
+
+![Elegant edition](preview-elegant.png)
+
 ## Features
 
 - **50 members** — founders, JLI-era heroes, modern roster, Lanterns of every Earth, plus a few
@@ -30,13 +39,32 @@ Opening `index.html` directly also works.
 ## Layout
 
 ```
-index.html              # single page shell
-css/style.css           # dex UI theme
-js/data.js              # member records (the "dex" database)
-js/app.js               # grid rendering, search, filter, detail modal
-images/*.svg            # 50 generated member crests
-tools/generate_emblems.py  # regenerates images/*.svg
+index.html                 # classic dex page (hologram grid)
+elegant.html               # elegant edition (editorial archive)
+css/style.css              # classic dex theme
+css/elegant.css            # elegant edition theme
+css/fonts.css              # self-hosted @font-face declarations
+js/data.js                 # member records (the "dex" database)
+js/app.js                  # classic dex behaviour
+js/elegant.js              # elegant edition behaviour (spotlight, roster, entry sheet)
+js/accents.js              # per-member accent palette (generated)
+images/*.svg               # 50 generated member crests
+fonts/*.woff2              # Cormorant Garamond + Inter, latin subsets (OFL 1.1)
+tools/generate_emblems.py  # regenerates images/*.svg and js/accents.js
 ```
+
+## The elegant edition
+
+`elegant.html` is a slower, more ceremonial reading of the same fifty records:
+
+- **Hero** with a drifting starfield, gold-foil wordmark and hairline rails.
+- **Spotlight** — one member at a time: medallion, era, vitals, animated stat lines,
+  abilities and bio, with ‹ › paging and a progress hairline. Hovering pauses the cycle.
+- **Roster** — serif cards in a restrained grid, founding members marked with a gold
+  diamond, era filters (Golden / Silver / Bronze / Modern), A–Z or dex order, live search.
+- **Entry sheet** — full-page reading view with `←`/`→` to turn pages and `Esc` to close.
+- Type is **Cormorant Garamond** (display) and **Inter** (small caps), self-hosted so the
+  page works offline; both are SIL Open Font License 1.1 (see `fonts/LICENSE-OFL.txt`).
 
 ## Adding a member
 

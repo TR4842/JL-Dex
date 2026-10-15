@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JL-Dex — The Justice League Archive</title>
+<meta name="description" content="An elegant archive of Justice League members: origins, powers, abilities and legends, in one refined edition." />
+<link rel="stylesheet" href="css/fonts.css" />
+<link rel="stylesheet" href="css/elegant.css" />
+</head>
+<body>
+
+<a class="skip" href="#roster">Skip to the roster</a>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="mark" href="#top"><span class="mark__t">JL</span><span class="mark__dot">·</span><span class="mark__t">DEX</span></a>
+    <nav class="nav__links">
+      <a href="#spotlight">Spotlight</a>
+      <a href="#roster">Roster</a>
+      <a href="index.html">Classic dex</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ───────────────────────────── hero ───────────────────────────── -->
+  <section class="hero">
+    <canvas id="stars" aria-hidden="true"></canvas>
+    <div class="hero__rails" aria-hidden="true">
+      <div class="rail rail--l"><span>Est. 1960 &nbsp;·&nbsp; An unofficial archive</span></div>
+      <div class="rail rail--r"><span>Members&nbsp;50 &nbsp;·&nbsp; Powers&nbsp;&amp;&nbsp;Origins</span></div>
+    </div>
+
+    <div class="hero__mid">
+      <p class="kicker">The Justice League Archive</p>
+      <h1 class="hero__title">Justice<span class="hero__thin">League</span></h1>
+      <div class="rule rule--diamond" aria-hidden="true"><i></i><b>◆</b><i></i></div>
+      <p class="hero__lede">Fifty members, one archive — origins, powers, abilities and the legends behind them.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid" href="#roster">Browse the roster</a>
+        <a class="btn btn--ghost" href="#spotlight">Enter the spotlight</a>
+      </div>
+    </div>
+
+    <a class="scrolldown" href="#spotlight" aria-label="Scroll to spotlight"><span></span></a>
+  </section>
+
+  <!-- ─────────────────────────── spotlight ─────────────────────────── -->
+  <section class="spot" id="spotlight">
+    <header class="sect">
+      <p class="kicker">In the spotlight</p>
+      <h2 class="sect__title">A member, at a glance</h2>
+    </header>
+
+    <div class="spot__frame reveal" id="spotFrame">
+      <div class="spot__art">
+        <div class="medallion">
+          <span class="medallion__ring"></span>
+          <span class="medallion__ring medallion__ring--in"></span>
+          <span class="medallion__sweep" aria-hidden="true"></span>
+          <div class="medallion__art"><img id="spImg" alt="" /></div>
+          <span class="medallion__no" id="spNo"></span>
+        </div>
+      </div>
+
+      <div class="spot__body">
+        <p class="spot__meta"><span id="spEra"></span><span class="dot">·</span><span id="spOrigin"></span></p>
+        <h3 class="spot__name" id="spName"></h3>
+        <p class="spot__alias" id="spAlias"></p>
+        <div class="spot__vitals" id="spVitals"></div>
+        <div class="rule" aria-hidden="true"><i></i></div>
+        <p class="spot__bio" id="spBio"></p>
+        <div class="spot__stats" id="spStats"></div>
+        <p class="spot__abils" id="spAbils"></p>
+        <div class="spot__foot">
+          <button class="linkish" id="spOpen">Open full entry</button>
+          <span class="spot__pager">
+            <button class="circ" id="spPrev" aria-label="Previous member">‹</button>
+            <span class="spot__count" id="spCount"></span>
+            <button class="circ" id="spNext" aria-label="Next member">›</button>
+          </span>
+        </div>
+        <div class="progress" aria-hidden="true"><i id="spProgress"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────── roster ──────────────────────────── -->
+  <section class="roster" id="roster">
+    <header class="sect sect--wide">
+      <p class="kicker">The complete roster</p>
+      <h2 class="sect__title">Fifty members of the League</h2>
+      <div class="rule" aria-hidden="true"><i></i></div>
+    </header>
+
+    <div class="controls reveal">
+      <label class="field">
+        <span class="field__label">Search</span>
+        <input id="q" type="search" placeholder="Name, alias, origin, power…" autocomplete="off" />
+      </label>
+      <div class="controls__row">
+        <div class="eras" id="eras" role="group" aria-label="Filter by era"></div>
+        <div class="sort" role="group" aria-label="Sort order">
+          <button class="sortbtn is-on" data-sort="dex">Dex order</button>
+          <span class="sort__sep" aria-hidden="true">/</span>
+          <button class="sortbtn" data-sort="az">A – Z</button>
+        </div>
+      </div>
+      <p class="tally" id="tally"></p>
+    </div>
+
+    <div class="grid" id="grid"></div>
+    <p class="none" id="none" hidden>No member answers to that.</p>
+  </section>
+
+  <!-- ─────────────────────────── colophon ─────────────────────────── -->
+  <footer class="foot">
+    <div class="foot__grid">
+      <div>
+        <p class="mark mark--foot"><span class="mark__t">JL</span><span class="mark__dot">·</span><span class="mark__t">DEX</span></p>
+        <p class="foot__note">An unofficial reference to the Justice League, set in Cormorant &amp; Inter.</p>
+      </div>
+      <div>
+        <p class="foot__h">Inside</p>
+        <a href="#spotlight">Spotlight</a><a href="#roster">Roster</a><a href="index.html">Classic dex</a>
+      </div>
+      <div>
+        <p class="foot__h">Colophon</p>
+        <p class="foot__note">All emblems are original vector crests generated by <code>tools/generate_emblems.py</code>.<br />Characters © DC Comics. A non-commercial fan work.</p>
+      </div>
+    </div>
+    <div class="rule rule--wide" aria-hidden="true"><i></i></div>
+    <p class="foot__legal">MIT licensed · Built as a static page, no dependencies</p>
+  </footer>
+</main>
+
+<!-- ──────────────────────────── entry card ──────────────────────────── -->
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet__scrim" data-close></div>
+  <article class="sheet__card" role="dialog" aria-modal="true" aria-labelledby="eName">
+    <button class="sheet__x" data-close aria-label="Close entry">✕</button>
+    <button class="sheet__nav sheet__nav--prev" id="ePrev" aria-label="Previous entry">‹</button>
+    <button class="sheet__nav sheet__nav--next" id="eNext" aria-label="Next entry">›</button>
+    <span class="tick tick--tl"></span><span class="tick tick--tr"></span>
+    <span class="tick tick--bl"></span><span class="tick tick--br"></span>
+
+    <div class="sheet__art">
+      <div class="medallion medallion--lg">
+        <span class="medallion__ring"></span>
+        <span class="medallion__ring medallion__ring--in"></span>
+        <span class="medallion__sweep" aria-hidden="true"></span>
+        <div class="medallion__art"><img id="eImg" alt="" /></div>
+        <span class="medallion__no" id="eNo"></span>
+      </div>
+      <p class="sheet__artnote" id="eFirst"></p>
+    </div>
+
+    <div class="sheet__body">
+      <p class="kicker" id="eEra"></p>
+      <h3 class="sheet__name" id="eName"></h3>
+      <p class="sheet__alias" id="eAlias"></p>
+      <div class="rule" aria-hidden="true"><i></i></div>
+      <dl class="facts" id="eFacts"></dl>
+      <div class="sheet__stats" id="eStats"></div>
+      <p class="sheet__abhead">Abilities</p>
+      <p class="sheet__abils" id="eAbils"></p>
+      <p class="sheet__bio" id="eBio"></p>
+    </div>
+  </article>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/accents.js"></script>
+<script src="js/elegant.js"></script>
+</body>
+</html>
