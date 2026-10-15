@@ -8,6 +8,7 @@
 
   var DATA = window.JLDEX || [];
   var ACC = window.JLDEX_ACCENTS || {};
+  var PORTRAITS = window.JLDEX_PORTRAITS || {};
   var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var STATS = [['hp', 'HP'], ['atk', 'ATK'], ['def', 'DEF'], ['spd', 'SPD'], ['int', 'INT'], ['wil', 'WIL']];
@@ -16,6 +17,10 @@
   function $(id) { return document.getElementById(id); }
   function slugOf(m) { return (m.image || '').split('/').pop().replace(/\.[a-z]+$/, ''); }
   function accentOf(m) { var a = ACC[slugOf(m)]; return (a && a.accent) || '#c9a227'; }
+  /* Portraits where the archive has one, crests where it does not yet. */
+  function artFor(m) {
+    return PORTRAITS[slugOf(m)] ? 'images/heroes/' + slugOf(m) + '.jpg' : m.image;
+  }
   function deepOf(m) { var a = ACC[slugOf(m)]; return (a && a.deep) || '#0a0d16'; }
   function pad(n) { return String(n).padStart(3, '0'); }
   function yearOf(m) { var x = /\((\d{4})\)/.exec(m.first || ''); return x ? +x[1] : 0; }
@@ -120,7 +125,7 @@
       i = (n + DATA.length) % DATA.length;
       var m = DATA[i];
       img.style.opacity = 0;
-      img.src = m.image; img.alt = m.name + ' emblem';
+      img.src = artFor(m); img.alt = 'Portrait of ' + m.name;
       img.onload = function () { img.style.opacity = 1; };
       if (img.complete) img.style.opacity = 1;
       no.textContent = '№ ' + pad(m.id);
@@ -229,7 +234,7 @@
       card.innerHTML =
         '<span class="card__no">' + pad(m.id) + '</span>' +
         (isFounder(m) ? '<span class="card__star" title="Founding member">◆ FOUNDING</span>' : '') +
-        '<span class="card__art"><img loading="lazy" src="' + m.image + '" alt="' + m.name + ' emblem"></span>' +
+        '<span class="card__art"><img loading="lazy" src="' + artFor(m) + '" alt="' + m.name + '"></span>' +
         '<h3 class="card__name">' + m.name + '</h3>' +
         '<p class="card__alias">' + m.alias + '</p>' +
         '<span class="card__hair"></span>' +
@@ -248,7 +253,8 @@
   var sheet = (function () {
     var el = $('sheet'), i = 0, lastFocus = null, active = DATA;
     var img = $('eImg'), no = $('eNo'), name = $('eName'), alias = $('eAlias'), era = $('eEra'),
-        facts = $('eFacts'), stats = $('eStats'), abils = $('eAbils'), bio = $('eBio'), first = $('eFirst');
+        facts = $('eFacts'), stats = $('eStats'), abils = $('eAbils'), bio = $('eBio'), first = $('eFirst'),
+        crest = $('eCrest');
 
     function list() { return state.list.length ? state.list : DATA; }
 
@@ -271,7 +277,8 @@
     }
     function fill() {
       var m = active[i];
-      img.src = m.image; img.alt = m.name + ' emblem';
+      img.src = artFor(m); img.alt = 'Portrait of ' + m.name;
+      crest.src = m.image; crest.alt = m.name + ' crest';
       no.textContent = '№ ' + pad(m.id);
       name.textContent = m.name;
       alias.textContent = m.alias;

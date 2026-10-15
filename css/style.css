@@ -34,6 +34,15 @@ body{
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 .subtitle{color:var(--muted);font-size:13px;letter-spacing:1px;text-transform:uppercase}
+.artmode{
+  display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#0e1730
+}
+.ambtn{
+  font:inherit;font-size:11px;letter-spacing:1.3px;text-transform:uppercase;font-weight:700;
+  color:var(--muted);padding:8px 14px;background:transparent;border:0;cursor:pointer;transition:all .2s ease
+}
+.ambtn:hover{color:#fff}
+.ambtn.active{background:linear-gradient(90deg,var(--blue),#1b4bb8);color:#fff}
 .nav-elegant{
   margin-left:auto;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;
   color:#e7d3a0;border:1px solid rgba(231,211,160,.28);border-radius:999px;padding:8px 14px;

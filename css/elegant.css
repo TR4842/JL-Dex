@@ -372,7 +372,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .card:hover .card__no{color:var(--gold-2)}
 .card__star{position:absolute;top:13px;right:16px;font-size:9px;color:var(--gold);letter-spacing:.18em}
 .card__art{
-  width:132px;aspect-ratio:1;border-radius:50%;overflow:hidden;
+  width:158px;aspect-ratio:1;border-radius:50%;overflow:hidden;
   border:1px solid var(--line-2);
   box-shadow:inset 0 0 40px rgba(0,0,0,.45);
   transition:box-shadow .6s var(--ease), border-color .6s var(--ease);
@@ -428,6 +428,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     radial-gradient(80% 60% at 50% 30%, rgba(201,162,39,.10), transparent 70%),
     linear-gradient(180deg,rgba(244,241,234,.02),transparent);
 }
+.crestrow{
+  display:flex;align-items:center;gap:12px;opacity:.82;
+}
+.crestrow img{
+  width:54px;height:54px;border-radius:50%;object-fit:cover;
+  border:1px solid var(--hair);box-shadow:inset 0 0 20px rgba(0,0,0,.5);
+}
+.crestrow span{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--dim)}
 .sheet__artnote{
   margin:0;text-align:center;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--dim);
   max-width:26ch;line-height:1.9;

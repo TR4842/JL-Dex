@@ -1,5 +1,6 @@
 (function () {
   var DATA = window.JLDEX || [];
+  var PORTRAITS = window.JLDEX_PORTRAITS || {};
   var grid = document.getElementById('grid');
   var search = document.getElementById('search');
   var filters = document.getElementById('filters');
@@ -9,6 +10,33 @@
   var currentIndex = -1;
 
   function pad(n) { return String(n).padStart(3, '0'); }
+
+  // ── art: hero portraits when available, archive crests otherwise ──
+  var artMode = 'crest';
+  try {
+    artMode = localStorage.getItem('jldex-art') ||
+      (Object.keys(PORTRAITS).length ? 'portrait' : 'crest');
+  } catch (e) {}
+  function slugOf(m) { return (m.image || '').split('/').pop().replace(/\.[a-z]+$/, ''); }
+  function hasPortrait(m) { return !!PORTRAITS[slugOf(m)]; }
+  function artFor(m) {
+    return (artMode === 'portrait' && hasPortrait(m)) ? 'images/heroes/' + slugOf(m) + '.jpg' : m.image;
+  }
+  function syncArtButtons() {
+    Array.prototype.forEach.call(document.querySelectorAll('.ambtn'), function (b) {
+      b.classList.toggle('active', b.dataset.art === artMode);
+      b.disabled = b.dataset.art === 'portrait' && !Object.keys(PORTRAITS).length;
+    });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.ambtn'), function (b) {
+    b.addEventListener('click', function () {
+      artMode = b.dataset.art;
+      try { localStorage.setItem('jldex-art', artMode); } catch (e) {}
+      syncArtButtons();
+      render();
+      if (!modal.classList.contains('hidden') && currentIndex > -1) open(DATA[currentIndex]);
+    });
+  });
 
   // Build type filter chips
   var types = [];
@@ -67,7 +95,7 @@
       card.tabIndex = 0;
       card.innerHTML =
         '<div class="imgbox"><span class="num">#' + pad(m.id) + '</span>' +
-        '<img loading="lazy" src="' + m.image + '" alt="' + m.name + '"></div>' +
+        '<img loading="lazy" src="' + artFor(m) + '" alt="' + m.name + '"></div>' +
         '<div class="body"><h3>' + m.name + '</h3>' +
         '<div class="alias">' + m.alias + '</div>' +
         '<div class="chips">' + (m.types || []).map(function (x) { return '<span class="chip">' + x + '</span>'; }).join('') + '</div></div>';
@@ -81,7 +109,7 @@
 
   function open(m) {
     currentIndex = DATA.indexOf(m);
-    document.getElementById('mImg').src = m.image;
+    document.getElementById('mImg').src = artFor(m);
     document.getElementById('mImg').alt = m.name;
     document.getElementById('mId').textContent = '#' + pad(m.id);
     document.getElementById('mName').textContent = m.name;
@@ -123,5 +151,6 @@
   search.addEventListener('input', render);
   search.addEventListener('keydown', function (e) { if (e.key === 'Escape') search.blur(); });
 
+  syncArtButtons();
   render();
 })();
